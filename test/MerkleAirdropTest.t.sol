@@ -14,6 +14,7 @@ contract MerkleAirdropTest is ZkSyncChainChecker, Test {
 
     address user;
     uint256 userPrivKey;
+    address gasPayer;
 
     uint256 constant AMOUNT_TO_CLAIM = 25e18;
     uint256 constant AMOUNT_TO_MINT = AMOUNT_TO_CLAIM * 10;
@@ -33,12 +34,16 @@ contract MerkleAirdropTest is ZkSyncChainChecker, Test {
             (merkleAirdrop, tamago) = deployer.run();
         }
         (user, userPrivKey) = makeAddrAndKey("user");
+        gasPayer = makeAddr("gasPayer");
     }
 
     function testUsersCanClaim() public {
         uint256 startingBalance = tamago.balanceOf(user);
-        vm.prank(user);
-        merkleAirdrop.claim(user, AMOUNT_TO_CLAIM, merkleProof);
+        bytes32 digest = merkleAirdrop.getMessage(user, AMOUNT_TO_CLAIM);
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(userPrivKey, digest);
+
+        vm.prank(gasPayer);
+        merkleAirdrop.claim(user, AMOUNT_TO_CLAIM, merkleProof, v, r, s);
 
         uint256 endingBalance = tamago.balanceOf(user);
 

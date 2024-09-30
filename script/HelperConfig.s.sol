@@ -25,7 +25,7 @@ contract HelperConfig is Script {
         return NetworkConfig({deployerKey: vm.envUint("PRIVATE_KEY")});
     }
 
-    function getOrCreateAnvilNetworkConfig() public pure returns (NetworkConfig memory anvilNetworkConfig) {
-        anvilNetworkConfig = NetworkConfig({deployerKey: DEFAULT_ANVIL_KEY});
+    function getOrCreateAnvilNetworkConfig() public pure returns (NetworkConfig memory) {
+        return NetworkConfig({deployerKey: DEFAULT_ANVIL_KEY});
     }
 }
