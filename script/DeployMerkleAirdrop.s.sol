@@ -7,7 +7,7 @@ import {MerkleAirdrop} from "../src/MerkleAirdrop.sol";
 import {HelperConfig} from "./HelperConfig.s.sol";
 
 contract DeployMerkleAirdrop is Script {
-    bytes32 constant MERKLE_ROOT = 0xaa5d581231e596618465a56aa0f5870ba6e20785fe436d5bfb82b08662ccc7c4;
+    bytes32 constant MERKLE_ROOT = 0x7f27b2c0c34d5e7ca06adbbb1a62fc74ed490e5d42cd41dd8dc533d4001f57a7;
     uint256 constant AMOUNT_TO_MINT = 25e18 * 4;
 
     function run() public returns (MerkleAirdrop, TamagoToken) {

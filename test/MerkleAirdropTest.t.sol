@@ -9,7 +9,7 @@ import {ZkSyncChainChecker} from "lib/foundry-devops/src/ZkSyncChainChecker.sol"
 
 contract MerkleAirdropTest is ZkSyncChainChecker, Test {
     MerkleAirdrop merkleAirdrop;
-    bytes32 merkleRoot = 0xaa5d581231e596618465a56aa0f5870ba6e20785fe436d5bfb82b08662ccc7c4;
+    bytes32 merkleRoot = 0x7f27b2c0c34d5e7ca06adbbb1a62fc74ed490e5d42cd41dd8dc533d4001f57a7;
     TamagoToken tamago;
 
     address user;
@@ -20,7 +20,7 @@ contract MerkleAirdropTest is ZkSyncChainChecker, Test {
     uint256 constant AMOUNT_TO_MINT = AMOUNT_TO_CLAIM * 10;
 
     bytes32 proofOne = 0x0fd7c981d39bece61f7499702bf59b3114a90e66b51ba2c53abdf7b62986c00a;
-    bytes32 proofTwo = 0xe5ebd1e1b5a5478a944ecab36a9a954ac3b6b8216875f6524caa7a1d87096576;
+    bytes32 proofTwo = 0xa2af7c161f5b7159dd5044cf2c386cba4f9156339636380af02017f8d5ac7ad3;
     bytes32[] private merkleProof = [proofOne, proofTwo];
 
     function setUp() public {

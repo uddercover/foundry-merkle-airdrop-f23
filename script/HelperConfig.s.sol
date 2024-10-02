@@ -22,7 +22,7 @@ contract HelperConfig is Script {
     NetworkConfig public activeNetworkConfig;
 
     function getSepoliaNetworkConfig() public view returns (NetworkConfig memory) {
-        return NetworkConfig({deployerKey: vm.envUint("PRIVATE_KEY")});
+        return NetworkConfig({deployerKey: vm.envUint("SEPOLIA_PRIVATE_KEY")});
     }
 
     function getOrCreateAnvilNetworkConfig() public pure returns (NetworkConfig memory) {
